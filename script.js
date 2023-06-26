@@ -22,7 +22,6 @@ for (let i = 0; i < grid_size; i++) {
         height: 100%; 
         width: ${rem_size/grid_size}rem;
         `)
-        cell.
         row.appendChild(cell);
     }
 }
