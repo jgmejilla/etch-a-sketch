@@ -1,10 +1,17 @@
+// to-do only change color when mouseover and mousedown
+
 canvas = document.querySelector('.canvas');
 rem_size = 35;
 grid_size = 30;
 color = 'black';
+is_down = false;
 
 min_size = 8;
 max_size = 64;
+
+body = document.getElementsByTagName('body')[0];
+body.addEventListener('mousedown', mousedown)
+body.addEventListener('mouseup', mouseup)
 
 function createCanvas() {
     for (let i = 0; i < grid_size; i++) {
@@ -34,8 +41,6 @@ function createCanvas() {
     }
 }
 
-createCanvas();
-
 
 button_div = document.querySelector('.button-div');
 button = document.createElement('button');
@@ -53,14 +58,17 @@ slider.addEventListener('input', changeValue);
 slider_div.appendChild(slider);
 
 
+createCanvas();
+createSliderText();
+
 function createSliderText() {
+    reset_grid();
     text_size = document.createElement('p');
     text_size.innerHTML = `grid size: ${slider.value}x${slider.value}`;
     text_size.style['font-size'] = '15px';
     slider_div.appendChild(text_size);
 }
 
-createSliderText();
 
 function changeValue(e) {
     console.log(slider.value);
@@ -81,7 +89,21 @@ function reset_grid(e) {
 }
 
 function shade(e) {
-    id = e.target.id;
-    cell = document.getElementById(id);
-    cell.style['background-color'] = color;
+    if (is_down) {
+        id = e.target.id;
+        cell = document.getElementById(id);
+        cell.style['background-color'] = color;
+    }
 }
+
+function mousedown(e) {
+    is_down = true;
+    console.log(is_down);
+}
+
+function mouseup(e) {
+    is_down = false;
+    console.log(is_down);
+}
+
+
