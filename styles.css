@@ -12,7 +12,7 @@ to add
     font-family: 'Inconsolata', monospace;
 }
 
-body{
+body {
     background-color: rgb(237, 237, 245);
 
     overflow: hidden;
@@ -25,16 +25,32 @@ body{
     display: flex;
     justify-content: center;
     align-items: center; 
-  }
+}
+
+img {
+    height: 15px;
+}
+
+p {
+    font-size: 20px;
+    color:rgb(50, 52, 60);
+}
 
 .main {
     width: 80%;
     height: 100%;
     
-
     display: flex;
     justify-content: space-between;
     align-items: center; 
+}
+
+a {
+    color:rgb(50, 52, 60);
+}
+
+a:hover {
+    color: rgb(141, 103, 255);
 }
 
 .column {
@@ -45,16 +61,37 @@ body{
 }
 
 .left {
+    height: 55%;
     flex: 1;
     display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
+    justify-content: center;
 }
 
-.button-div, .slider-div {
-    height: 10px;
-    width: 10px;
-    border: 1px solid black;
+.left > div {
+    height: 7rem;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-div {
+    flex: 1;
+}
+
+.slider-div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-div > p {
+    margin-top: 5px;
+}
+
+.others {
+    flex: 2;
 }
 
 .middle {
@@ -95,8 +132,8 @@ body{
 
     box-shadow: 12px 8px 53px -8px rgba(83,83,83,0.75);
     box-shadow: 4px 9px 53px -8px rgba(22,22,22,1);
-    -webkit-box-shadow: 4px 9px 53px -8px rgba(22,22,22,1);
-    -moz-box-shadow: 4px 9px 53px -8px rgba(22,22,22,1);
+    -webkit-box-shadow: 4px 9px 53px -8px rgba(22,22,22,0.5);
+    -moz-box-shadow: 4px 9px 53px -8px rgba(22,22,22,0.5);
 
     background-color: white;
     display: flex;
@@ -113,6 +150,13 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+}
+
+button {
+    padding: 1.5rem;
+    box-shadow: 5px 4px 22px 0px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 5px 4px 22px 0px rgba(0,0,0,0.24);
+    -moz-box-shadow: 5px 4px 22px 0px rgba(0,0,0,0.24);
 }
 
 input {
@@ -132,7 +176,7 @@ input[type="range"] {
   }
   
   input[type="range"]::-webkit-slider-runnable-track {
-    height: 15px;
+    height: 20px;
     background: rgb(50, 52, 60);
     border-radius: 16px;
   }
@@ -140,8 +184,8 @@ input[type="range"] {
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none; 
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     background-color: rgb(255, 255, 255);
     border-radius: 50%;
     border: 2px solid rgb(101, 105, 124);
@@ -150,15 +194,15 @@ input[type="range"] {
 
   /* Track: Mozilla Firefox */
 input[type="range"]::-moz-range-track {
-    height: 15px;
+    height: 20px;
     background: #ccc;
     border-radius: 16px;
   }
 
 /* Thumb: Firefox */
 input[type="range"]::-moz-range-thumb {
-    height: 15px;
-    width: 15px;
+    height: 20px;
+    width: 20px;
     background-color: #fff;
     border-radius: 50%;
     border: 1px solid #f50;

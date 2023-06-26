@@ -4,7 +4,7 @@ grid_size = 30;
 color = 'black';
 
 min_size = 8;
-max_size = 100;
+max_size = 64;
 
 function createCanvas() {
     for (let i = 0; i < grid_size; i++) {
@@ -28,7 +28,7 @@ function createCanvas() {
             cell.setAttribute('id', `${i}-${j}`);
             cell.setAttribute('class', 'cell');
     
-            cell.addEventListener('mouseover', changeColor)
+            cell.addEventListener('mouseover', shade)
             row.appendChild(cell);
         }
     }
@@ -36,20 +36,40 @@ function createCanvas() {
 
 createCanvas();
 
+
 button_div = document.querySelector('.button-div');
 button = document.createElement('button');
-button.textContent = 'click me';
+button.textContent = 'reset canvas';
 button.addEventListener('click', reset_grid);
 button_div.appendChild(button);
 
+slider_div = document.querySelector('.slider-div');
 slider = document.createElement('input');
 slider.type = 'range';
 slider.min = `${min_size}`;
 slider.max = `${max_size}`; 
-slider.value = `16`;
+slider.value = `${(max_size+min_size)/2}`;
+slider.addEventListener('input', changeValue);
 slider_div.appendChild(slider);
 
+
+function createSliderText() {
+    text_size = document.createElement('p');
+    text_size.innerHTML = `grid size: ${slider.value}x${slider.value}`;
+    text_size.style['font-size'] = '15px';
+    slider_div.appendChild(text_size);
+}
+
+createSliderText();
+
+function changeValue(e) {
+    console.log(slider.value);
+    slider_div.removeChild(slider_div.lastChild);
+    createSliderText();
+}
+
 function reset_grid(e) {
+    console.log(slider.value);
     cells = document.querySelectorAll('.cell');
     cells.forEach((cell) => {
         cell.style['background-color'] = 'white';
@@ -60,7 +80,7 @@ function reset_grid(e) {
     createCanvas();
 }
 
-function changeColor(e) {
+function shade(e) {
     id = e.target.id;
     cell = document.getElementById(id);
     cell.style['background-color'] = color;
