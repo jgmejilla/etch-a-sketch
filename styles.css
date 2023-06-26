@@ -70,13 +70,29 @@ body{
 }
 
 .screen {
-    flex: 4;
+    flex: 7;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.middle-elem.credits {
+.canvas {
+    width: 32rem;
+    height: 32rem;
+
+    max-width: 32rem;
+    max-height: 32rem;
+    min-width: 32rem;
+    min-height: 32rem;
+
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.credits {
     flex: 1;
     align-self: flex-end;
 
