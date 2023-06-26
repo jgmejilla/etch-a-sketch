@@ -41,12 +41,12 @@ function createCanvas() {
     }
 }
 
-
+left = document.querySelector('.left');
 button_div = document.querySelector('.button-div');
 button = document.createElement('button');
 button.textContent = 'reset canvas';
 button.addEventListener('click', reset_grid);
-button_div.appendChild(button);
+left.appendChild(button);
 
 slider_div = document.querySelector('.slider-div');
 slider = document.createElement('input');
@@ -55,7 +55,7 @@ slider.min = `${min_size}`;
 slider.max = `${max_size}`; 
 slider.value = `${(max_size+min_size)/2}`;
 slider.addEventListener('input', changeValue);
-slider_div.appendChild(slider);
+left.appendChild(slider);
 
 
 createCanvas();
@@ -66,13 +66,13 @@ function createSliderText() {
     text_size = document.createElement('p');
     text_size.innerHTML = `grid size: ${slider.value}x${slider.value}`;
     text_size.style['font-size'] = '15px';
-    slider_div.appendChild(text_size);
+    left.appendChild(text_size);
 }
 
 
 function changeValue(e) {
     console.log(slider.value);
-    slider_div.removeChild(slider_div.lastChild);
+    left.removeChild(left.lastChild);
     createSliderText();
 }
 

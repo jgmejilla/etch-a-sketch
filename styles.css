@@ -67,6 +67,10 @@ a:hover {
     justify-content: center;
 }
 
+.left > button {
+    margin-bottom: 2rem;
+}
+
 .left > div {
     height: 7rem;
     width: 90%;
