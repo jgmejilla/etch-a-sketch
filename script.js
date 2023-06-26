@@ -6,6 +6,10 @@ grid_size = 30;
 color = 'black';
 is_down = false;
 
+random_color = false;
+darken_color = false;
+eraser_color = false;
+
 min_size = 8;
 max_size = 64;
 
@@ -42,13 +46,18 @@ function createCanvas() {
 }
 
 left = document.querySelector('.left');
-button_div = document.querySelector('.button-div');
+
 button = document.createElement('button');
 button.textContent = 'reset canvas';
 button.addEventListener('click', reset_grid);
 left.appendChild(button);
 
-slider_div = document.querySelector('.slider-div');
+checkbox = document.querySelector('.checkbox');
+checkbox.addEventListener('click', toggleRandom);
+
+checkbox2 = document.querySelector('.checkbox2');
+checkbox2.addEventListener('click', toggleEraser);
+
 slider = document.createElement('input');
 slider.type = 'range';
 slider.min = `${min_size}`;
@@ -56,7 +65,6 @@ slider.max = `${max_size}`;
 slider.value = `${(max_size+min_size)/2}`;
 slider.addEventListener('input', changeValue);
 left.appendChild(slider);
-
 
 createCanvas();
 createSliderText();
@@ -68,7 +76,6 @@ function createSliderText() {
     text_size.style['font-size'] = '15px';
     left.appendChild(text_size);
 }
-
 
 function changeValue(e) {
     console.log(slider.value);
@@ -92,18 +99,54 @@ function shade(e) {
     if (is_down) {
         id = e.target.id;
         cell = document.getElementById(id);
-        cell.style['background-color'] = color;
+
+        r = getRandomInt(255);
+        g = getRandomInt(255);
+        b = getRandomInt(255);
+
+        if (random_color && !eraser_color) {
+            cell.style['background-color'] = `rgb(${r}, ${g}, ${b})`;
+            console.log(cell.style['background-color']);
+        } else if (darken_color) { /*to-do in the future (probably not)*/
+            cell.style['background-color'] = `rgb(${r}, ${g}, ${b})`;
+        } else if (eraser_color) {
+            cell.style['background-color'] = `rgb(255, 255, 255)`;
+        } else {
+            cell.style['background-color'] = `rgb(0, 0, 0)`;
+        }
+
+        
+        
+        /*body.style['background-color'] = cell.style['background-color']*/
     }
 }
 
 function mousedown(e) {
     is_down = true;
-    console.log(is_down);
+    //console.log(is_down);
 }
 
 function mouseup(e) {
     is_down = false;
-    console.log(is_down);
+    //console.log(is_down);
 }
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
+function toggleRandom(e) {
+    if (eraser_color) {
+        checkbox2.checked = false;
+    }
+    random_color = checkbox.checked;
+    eraser_color = checkbox2.checked;
+}
+
+function toggleEraser(e) {
+    if (random_color) {
+        checkbox.checked = false;
+    }
+    random_color = checkbox.checked;
+    eraser_color = checkbox2.checked;
+}
