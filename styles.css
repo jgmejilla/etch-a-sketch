@@ -1,3 +1,9 @@
+/*
+to add
+- box shadox for canvas
+- remove borders
+- make aesthetic
+*/
 
 
 * {
@@ -7,6 +13,8 @@
 }
 
 body{
+    background-color: rgb(237, 237, 245);
+
     overflow: hidden;
     position: absolute;
     width: 100%;
@@ -20,10 +28,9 @@ body{
   }
 
 .main {
-    width: 90%;
+    width: 80%;
     height: 100%;
-    background-color: #deeeff;
-    border: 1px solid black;
+    
 
     display: flex;
     justify-content: space-between;
@@ -32,36 +39,40 @@ body{
 
 .column {
     height: 100%;
-    background-color: rgb(163, 255, 197);
-    border: 1px solid black;
-
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
 }
 
 .left {
     flex: 1;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.button-div, .slider-div {
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+}
+
+.middle {
+    justify-content: space-between;
+    flex: 0;
 }
 
 .right {
     flex: 1;
 }
 
-.middle {
-    flex: 2;
-}
-
 .middle-elem {
     height: 100px;
     width: 100%;
-    background-color: rgb(226, 195, 255);
-    border: 1px solid black;
 }
 
 .title {
-    flex: 1;
+    flex: 4;
     align-self: center;
 
     display: flex;
@@ -69,21 +80,23 @@ body{
     justify-content: center;
 }
 
-.screen {
-    flex: 7;
+
+.canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    flex: 0 0 0;
 
-.canvas {
-    width: 32rem;
-    height: 32rem;
+    height: auto;
+    width: auto;
 
-    max-width: 32rem;
-    max-height: 32rem;
-    min-width: 32rem;
-    min-height: 32rem;
+    max-height: 35rem;
+    max-width: 35rem;
+
+    box-shadow: 12px 8px 53px -8px rgba(83,83,83,0.75);
+    box-shadow: 4px 9px 53px -8px rgba(22,22,22,1);
+    -webkit-box-shadow: 4px 9px 53px -8px rgba(22,22,22,1);
+    -moz-box-shadow: 4px 9px 53px -8px rgba(22,22,22,1);
 
     background-color: white;
     display: flex;
@@ -93,7 +106,7 @@ body{
 }
 
 .credits {
-    flex: 1;
+    flex: 3;
     align-self: flex-end;
 
     display: flex;
@@ -102,5 +115,55 @@ body{
     justify-content: flex-end;
 }
 
+input {
+    width: 50%;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none; 
+
+    width: 75%;
+    cursor: pointer;
+    outline: none;
+
+    overflow: hidden;
+    border-radius: 16px;
+  }
+  
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 15px;
+    background: rgb(50, 52, 60);
+    border-radius: 16px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none; 
+    height: 15px;
+    width: 15px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 2px solid rgb(101, 105, 124);
+    box-shadow: -407px 0 0 400px rgb(211, 218, 255);
+  }
+
+  /* Track: Mozilla Firefox */
+input[type="range"]::-moz-range-track {
+    height: 15px;
+    background: #ccc;
+    border-radius: 16px;
+  }
+
+/* Thumb: Firefox */
+input[type="range"]::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #f50;
+    /*  slider progress trick  */
+    box-shadow: -407px 0 0 400px #f50;
+  }
 
 
