@@ -110,7 +110,7 @@ a:hover {
 
 .right > div {
     display: flex;
-    margin-left: 2rem;
+    margin-left: 3rem;
     margin-top: 0.5rem;
     width: 100%;
 }
@@ -176,6 +176,16 @@ input[type="checkbox"] {
     width: 3rem;
 }
 
+input[type="color"] {
+    height: 25px;
+    width: 25px;
+    margin-left: 11px;
+}
+
+.colormode {
+    margin-left: 10px;
+}
+
 label {
 
 }
@@ -228,3 +238,6 @@ input[type="range"]::-moz-range-thumb {
   }
 
 
+.third {
+    padding-top: 2px;
+}

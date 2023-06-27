@@ -10,8 +10,8 @@ random_color = false;
 darken_color = false;
 eraser_color = false;
 
-min_size = 8;
-max_size = 64;
+min_size = 10;
+max_size = 70;
 
 body = document.getElementsByTagName('body')[0];
 body.addEventListener('mousedown', mousedown)
@@ -40,6 +40,7 @@ function createCanvas() {
             cell.setAttribute('class', 'cell');
     
             cell.addEventListener('mouseover', shade)
+            cell.addEventListener('click', shade)
             row.appendChild(cell);
         }
     }
@@ -57,6 +58,9 @@ checkbox.addEventListener('click', toggleRandom);
 
 checkbox2 = document.querySelector('.checkbox2');
 checkbox2.addEventListener('click', toggleEraser);
+
+checkbox3 = document.querySelector('.checkbox3');
+checkbox3.addEventListener('input', changeColor);
 
 slider = document.createElement('input');
 slider.type = 'range';
@@ -96,7 +100,7 @@ function reset_grid(e) {
 }
 
 function shade(e) {
-    if (is_down) {
+    if (is_down || e.type == 'click') {
         id = e.target.id;
         cell = document.getElementById(id);
 
@@ -112,11 +116,8 @@ function shade(e) {
         } else if (eraser_color) {
             cell.style['background-color'] = `rgb(255, 255, 255)`;
         } else {
-            cell.style['background-color'] = `rgb(0, 0, 0)`;
+            cell.style['background-color'] = `${checkbox3.value}`;
         }
-
-        
-        
         /*body.style['background-color'] = cell.style['background-color']*/
     }
 }
@@ -141,6 +142,10 @@ function toggleRandom(e) {
     }
     random_color = checkbox.checked;
     eraser_color = checkbox2.checked;
+}
+
+function changeColor(e) {
+    console.log(checkbox3.value)
 }
 
 function toggleEraser(e) {
